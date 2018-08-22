@@ -11,3 +11,23 @@ button {
 	border-radius: 12px;
 	font-size: 20px;
 }
+
+.red{
+	color: red;
+}
+.green{
+	color: green;
+}
+
+.blue{
+	color:blue;
+}
+
+.rbgButtons{
+	font-size: 30px;
+}
+
+.hidden{
+	display : none;
+	/*opacity : 0;*/
+}
