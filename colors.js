@@ -1,9 +1,30 @@
 var body = document.querySelector("body");
+var colourBody = document.querySelector(".body");
+
 var light = document.querySelector("#light");
 var random = document.querySelector("#random");
 var dark = document.querySelector("#dark");
+
 var colour = document.querySelector("#colour");
 var hex = document.querySelector("#hex");
+
+var rUp = document.querySelectorAll(".red")[0];
+var gUp = document.querySelectorAll(".green")[0];
+var bUp = document.querySelectorAll(".blue")[0];
+
+var rDown = document.querySelectorAll(".red")[1];
+var gDown = document.querySelectorAll(".green")[1];
+var bDown = document.querySelectorAll(".blue")[1];
+
+var previous = document.querySelector("#previous");
+var next = document.querySelector("#next");
+
+var help = document.querySelector(".fa-question-circle");
+var toggler = document.querySelector(".fa-toggle-off");
+
+var advanceTools = document.querySelectorAll(".hider");
+var helpBar = document.querySelector(".helphider");
+/*--------*/
 
 var r = 255;
 var g = 255;
@@ -17,20 +38,14 @@ var rNext = r;
 var gNext = g;
 var bNext = b;
 
+/*--------*/
+
 var colString; //string
 var hexString; //string
 var whiteFont; //boolean
+var toggled = false; //boolean
 
-var rUp = document.querySelectorAll(".red")[0];
-var gUp = document.querySelectorAll(".green")[0];
-var bUp = document.querySelectorAll(".blue")[0];
 
-var rDown = document.querySelectorAll(".red")[1];
-var gDown = document.querySelectorAll(".green")[1];
-var bDown = document.querySelectorAll(".blue")[1];
-
-var previous = document.querySelector("#previous");
-var next = document.querySelector("#next");
 
 
 
@@ -177,4 +192,23 @@ next.addEventListener("click",function(){
 	stringColour(rNext,gNext,bNext);
 	next.classList.add("hidden");
 	previous.classList.remove("hidden");
+});
+
+toggler.addEventListener("click",function(){
+	if(!toggled){
+		toggler.classList.remove("fa-toggle-off");
+		toggler.classList.add("fa-toggle-on");
+	}else{
+		toggler.classList.remove("fa-toggle-on");
+		toggler.classList.add("fa-toggle-off");
+	}
+	for(var i = 0; i <advanceTools.length ; i++){
+			advanceTools[i].classList.toggle("hider");
+		}
+	toggled = !toggled;
+});
+
+help.addEventListener("click",function(){
+	colourBody.classList.toggle("helphider");
+	helpBar.classList.toggle("helphider");
 });
