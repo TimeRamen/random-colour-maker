@@ -3,17 +3,35 @@
 <html>
 <head>
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 		<link rel="stylesheet" href="colors.css" type="text/css">
 		
-		<title>Hello World</title>
+		<title>Random Colour Generator</title>
 		
 </head>
 <body>
 		<h1>Change The Colour</h1>
 		<h2>RGB: <span id="colour">rgb(255,255,255)</span> </h2>
 		<h2>Hexadecimal: #<span id="hex">FFFFFF</span> </h2>
-		<button>CHANGE</button>
 		
+		<button class="hidden" id="previous"><i class="fas fa-caret-left"></i></button>
+		<button id="light">Light colour</button>
+		<button id="random">Random colour</button>
+		<button id="dark">Dark colour</button>
+		<button class="hidden" id="next"><i class="fas fa-caret-right"></i></button>
+		<div class="rbgButtons">
+		
+
+		
+			<i class="fas fa-caret-up red"></i>
+			<i class="fas fa-caret-up green"></i>
+			<i class="fas fa-caret-up blue"></i>
+			</br>
+			<i class="fas fa-caret-down red"></i>
+			<i class="fas fa-caret-down green"></i>
+			<i class="fas fa-caret-down blue"></i>
+		
+		</div>
 <script type= "text/javascript" src="colors.js"></script>
 
 </body>
