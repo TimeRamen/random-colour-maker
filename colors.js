@@ -1,27 +1,28 @@
+//selection of body to change colour.
 var body = document.querySelector("body");
-var colourBody = document.querySelector(".body");
-
+//three colour generating buttons
 var light = document.querySelector("#light");
 var random = document.querySelector("#random");
 var dark = document.querySelector("#dark");
-
+//colour value spans that change textContent
 var colour = document.querySelector("#colour");
 var hex = document.querySelector("#hex");
-
+//colour channel inputs
 var rInput = document.querySelector("#red");
 var gInput = document.querySelector("#green");
 var bInput = document.querySelector("#blue");
-
-var previous = document.querySelector("#previous");
-var next = document.querySelector("#next");
-
-var help = document.querySelector(".fa-question-circle");
-var toggler = document.querySelector(".fa-toggle-off");
-
+//lock icons
 var redLock = document.querySelector("#redLock");
 var greenLock = document.querySelector("#greenLock");
 var blueLock = document.querySelector("#blueLock");
-
+//previous and next buttons
+var previous = document.querySelector("#previous");
+var next = document.querySelector("#next");
+//toggle buttons
+var help = document.querySelector(".fa-question-circle");
+var toggler = document.querySelector(".fa-toggle-off");
+//selection of divs to hide and unhide by toggling
+var colourBody = document.querySelector(".body");
 var advanceTools = document.querySelectorAll(".hider");
 var helpBar = document.querySelector(".helphider");
 /*--------*/
@@ -80,12 +81,23 @@ function rand(length,bottom){
 
 function rgbRand (length,bottom){
 	if((length+bottom) <= 255){
-		if(!rLocked){r = rand(length,bottom);}
-		if(!gLocked){g = rand(length,bottom);}
-		if(!bLocked){b = rand(length,bottom);}
+		if(!rLocked){
+			r = rand(length,bottom);
+			rInput.value = r;
+		}
+		if(!gLocked){
+			g = rand(length,bottom);
+			gInput.value = g;
+		}
+		if(!bLocked){
+			b = rand(length,bottom);
+			bInput.value = b;
+		}
 	}
 	rgbArray.push([r,g,b]);
 	currentIndex = rgbArray.length - 1;
+	
+	
 };
 
 function newColour(){
@@ -104,9 +116,7 @@ function stringColour(r,g,b){
 	colString = "rgb(" + r + "," + g + "," + b + ")";
 	colour.textContent = colString;
 	hex.textContent = hexString;
-	rInput.value = r;
-	gInput.value = g;
-	bInput.value = b;
+	
 	body.style.backgroundColor = colString;
 };
 
@@ -129,26 +139,42 @@ dark.addEventListener("click",function(){
 });
 
 rInput.addEventListener("change",function(){
-	r = rInput.value;
-	stringColour(rInput.value,g,b);
+	//r = rInput.value;
+	rgbArray[currentIndex] = [Number(rInput.value),Number(gInput.value),Number(bInput.value)];
+	stringColour(Number(rInput.value),Number(gInput.value),Number(bInput.value));
 });
 
 gInput.addEventListener("change",function(){
-	g = gInput.value;
-	stringColour(r,gInput.value,b);
+	//g = gInput.value;
+	rgbArray[currentIndex] = [Number(rInput.value),Number(gInput.value),Number(bInput.value)];
+	stringColour(Number(rInput.value),Number(gInput.value),Number(bInput.value));
 });
 
 bInput.addEventListener("change",function(){
-	b = bInput.value;
-	stringColour(r,g,bInput.value);
+	//b = bInput.value;
+	rgbArray[currentIndex] = [Number(rInput.value),Number(gInput.value),Number(bInput.value)];
+	stringColour(Number(rInput.value),Number(gInput.value),Number(bInput.value));
 });
+
+/*
+rInput.value = rgbArray[currentIndex - 1][0];
+gInput.value = rgbArray[currentIndex - 1][1];
+bInput.value = rgbArray[currentIndex - 1][2];
+*/
+
 
 
 previous.addEventListener("click",function(){
 	if(currentIndex > 0){
 	stringColour(rgbArray[currentIndex - 1][0],rgbArray[currentIndex - 1][1],rgbArray[currentIndex - 1][2]);
+	
+	rInput.value = rgbArray[currentIndex - 1][0];
+	gInput.value = rgbArray[currentIndex - 1][1];
+	bInput.value = rgbArray[currentIndex - 1][2];
+	
 	currentIndex--;
 	next.classList.remove("hidden");
+	
 	if(currentIndex === 0){
 	previous.classList.add("hidden");
 	}
@@ -158,8 +184,14 @@ previous.addEventListener("click",function(){
 next.addEventListener("click",function(){
 	if(currentIndex < rgbArray.length - 1){
 	stringColour(rgbArray[currentIndex + 1][0],rgbArray[currentIndex + 1][1],rgbArray[currentIndex + 1][2]);
+	
+	rInput.value = rgbArray[currentIndex + 1][0];
+	gInput.value = rgbArray[currentIndex + 1][1];
+	bInput.value = rgbArray[currentIndex + 1][2];
+	
 	currentIndex++;
 	previous.classList.remove("hidden");
+	
 	if(currentIndex === rgbArray.length - 1){
 	next.classList.add("hidden");
 	}
@@ -225,3 +257,8 @@ help.addEventListener("click",function(){
 	colourBody.classList.toggle("helphider");
 	helpBar.classList.toggle("helphider");
 });
+
+/*	Bugs&Issues
+	-	Too many similar classes.
+	-	
+*/
