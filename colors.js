@@ -26,17 +26,13 @@ var advanceTools = document.querySelectorAll(".hider");
 var helpBar = document.querySelector(".helphider");
 /*--------*/
 
+var rgbArray = [
+	[255,255,255]
+];
+
 var r = 255;
 var g = 255;
 var b = 255;
-
-var rPrevious = r;
-var gPrevious = g;
-var bPrevious = b;
-
-var rNext = r;
-var gNext = g;
-var bNext = b;
 
 var rLocked = false;
 var gLocked = false;
@@ -48,6 +44,7 @@ var colString; //string
 var hexString; //string
 var whiteFont; //boolean
 var toggled = false; //boolean
+var currentIndex = 0;
 
 
 
@@ -87,18 +84,12 @@ function rgbRand (length,bottom){
 		if(!gLocked){g = rand(length,bottom);}
 		if(!bLocked){b = rand(length,bottom);}
 	}
-};
-function assignPrevious(){
-	rPrevious = r;
-	gPrevious = g;
-	bPrevious = b;
-	previous.classList.remove("hidden");
+	rgbArray.push([r,g,b]);
+	currentIndex = rgbArray.length - 1;
 };
 
-function assignNext(){
-	rNext = r;
-	gNext = g;
-	bNext = b;
+function newColour(){
+	previous.classList.remove("hidden");
 	next.classList.add("hidden");
 };
 
@@ -120,25 +111,21 @@ function stringColour(r,g,b){
 };
 
 random.addEventListener("click",function(){
-	assignPrevious();
+	newColour();
 	rgbRand(255,0);
 	stringColour(r,g,b);
-	assignNext();
-	
 });
 
 light.addEventListener("click",function(){
-	assignPrevious();
+	newColour();
 	rgbRand(55,200);
 	stringColour(r,g,b);
-	assignNext();
 });
 
 dark.addEventListener("click",function(){
-	assignPrevious();
+	newColour();
 	rgbRand(55,0);
 	stringColour(r,g,b);
-	assignNext();
 });
 
 rInput.addEventListener("change",function(){
@@ -158,15 +145,25 @@ bInput.addEventListener("change",function(){
 
 
 previous.addEventListener("click",function(){
-	stringColour(rPrevious,gPrevious,bPrevious);
+	if(currentIndex > 0){
+	stringColour(rgbArray[currentIndex - 1][0],rgbArray[currentIndex - 1][1],rgbArray[currentIndex - 1][2]);
+	currentIndex--;
 	next.classList.remove("hidden");
+	if(currentIndex === 0){
 	previous.classList.add("hidden");
+	}
+	} 
 });
 
 next.addEventListener("click",function(){
-	stringColour(rNext,gNext,bNext);
-	next.classList.add("hidden");
+	if(currentIndex < rgbArray.length - 1){
+	stringColour(rgbArray[currentIndex + 1][0],rgbArray[currentIndex + 1][1],rgbArray[currentIndex + 1][2]);
+	currentIndex++;
 	previous.classList.remove("hidden");
+	if(currentIndex === rgbArray.length - 1){
+	next.classList.add("hidden");
+	}
+	}
 });
 
 toggler.addEventListener("click",function(){
