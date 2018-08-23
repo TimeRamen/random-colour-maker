@@ -15,7 +15,7 @@
 
 
 <div class="container">
-	<div class="row">
+	<div class="row top">
 		<div class="col" id="left">
 			<i class="fas fa-question-circle question"></i>
 		</div>
@@ -34,18 +34,18 @@
 		
 		<li class="hider"><button class = "btn btn-dark btn-sm hider">Dark colour</button> - Only generates a colour within rgb(55,55,55) and downwards.</li>
 		
-		<li class="hider"><button class="btn btn-outline-danger btn-sm hider"><i class="fas fa-caret-up"></i></button>
-
-		<button class="btn btn-outline-success btn-sm hider"><i class="fas fa-caret-up"></i></button>
-
-		<button class="btn btn-outline-info btn-sm hider"><i class="fas fa-caret-up"></i></button>
-		 - Manual increment to respective colour channel.</li>
-		<li class="hider"><button class="btn btn-outline-danger btn-sm hider"><i class="fas fa-caret-down"></i></button>
-
-		<button class="btn btn-outline-success btn-sm hider"><i class="fas fa-caret-down"></i></button>
-
-		<button class="btn btn-outline-info btn-sm hider"><i class="fas fa-caret-down"></i></button>
-		- Manual decrement to respective colour channel.</li>
+		
+		
+		<li class="hider">
+		<label>RED: </label>
+			<input type="number"/><i class="fas fa-unlock inputBorder"></i>
+		<label>GREEN: </label>
+			<input type="number"/><i class="fas fa-unlock inputBorder"></i>
+		<label>BLUE: </label>
+			<input type="number"/><i class="fas fa-unlock inputBorder"></i>
+			
+		Number inputs for colour channels, lock to fix the value.
+		</li>
 
 		<li><button class="btn btn-outline-secondary btn-sm"><i class="fas fa-caret-left"></i></button> - Goes to previous randomised colour.</li>
 
@@ -69,28 +69,22 @@
 		<button id="light" class = "btn btn-light hider">Light colour</button>
 		<button id="random" class = "btn btn-secondary">Random colour</button>
 		<button id="dark" class = "btn btn-dark hider">Dark colour</button>
-		
-		
+	<div class="hider">
+		<label for="red">RED: </label>
+			<input type="number" id="red" name="red" placeholder="255" min="0" max="255" required=""/><i class="fas fa-unlock inputBorder" id = "redLock"></i>
+	</div>
+	<div class="hider">	
+		<label for="green">GREEN: </label>
+			<input type="number" id="green" name="green" placeholder="255" min="0" max="255" required=""/><i class="fas fa-unlock inputBorder" id = "greenLock"></i>
+	</div>
+	<div class="hider">	
+		<label for="blue">BLUE: </label>
+			<input type="number" id="blue" name="blue" placeholder="255" min="0" max="255" required=""/><i class="fas fa-unlock inputBorder" id = "blueLock"></i>
+	</div>
+		<button class="hidden btn btn-outline-secondary" id="previous"><i class="fas fa-caret-left"></i></button>
 
-<div class="rgbButtons">
-<button class="btn btn-outline-danger hider red"><i class="fas fa-caret-up"></i></button>
+		<button class="hidden btn btn-outline-secondary" id="next"><i class="fas fa-caret-right"></i></button>
 
-<button class="btn btn-outline-success hider green"><i class="fas fa-caret-up"></i></button>
-
-<button class="btn btn-outline-info hider blue"><i class="fas fa-caret-up"></i></button>
-</br>
-<button class="btn btn-outline-danger hider red"><i class="fas fa-caret-down"></i></button>
-
-<button class="btn btn-outline-success hider green"><i class="fas fa-caret-down"></i></button>
-
-<button class="btn btn-outline-info hider blue"><i class="fas fa-caret-down"></i></button>
-</div>
-<div class="left">
-<button class="hidden btn btn-outline-secondary" id="previous"><i class="fas fa-caret-left"></i></button>
-</div>
-<div class="right">
-<button class="hidden btn btn-outline-secondary" id="next"><i class="fas fa-caret-right"></i></button>
-</div>
 
 		
 		
