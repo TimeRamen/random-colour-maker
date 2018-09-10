@@ -21,13 +21,11 @@
             <h1>This is the help area that helps you.</h1>
         </div>
         <div class="colours">
-            <h1>This is the colour making area that makes colours.</h1>
-            <p>Current colour: rgb(<span>255,255,255</span>)</p>
-            <button>Random Colour</button>
-            <button class="advance-tips hidden">Light Colour</button>
-            <button class="advance-tips hidden">Dark Colour</button>
-            <input class="advance-tips hidden" type="number">
-            <input class="advance-tips hidden" type="number">
+            <p>Current colour: rgb(<span id="rgb-colour">255,255,255</span>)</p>
+            <p>Hexadecimal: #<span id="hex-colour">FFFFFF</span></p>
+            <button class="advance-tips hidden" id="light">Light Colour</button>
+            <button id="random">Random Colour</button>
+            <button class="advance-tips hidden" id="dark">Dark Colour</button>
         </div>
         <script type="text/javascript" src="colors.js"></script>
     </body>
